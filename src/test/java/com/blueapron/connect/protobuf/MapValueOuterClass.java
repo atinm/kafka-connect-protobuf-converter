@@ -60,12 +60,12 @@ public final class MapValueOuterClass {
    * Protobuf type {@code MapValue}
    */
   public  static final class MapValue extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:MapValue)
       MapValueOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use MapValue.newBuilder() to construct.
-    private MapValue(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private MapValue(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
     }
     private MapValue() {
@@ -140,7 +140,7 @@ public final class MapValueOuterClass {
               "Invalid map field number: " + number);
       }
     }
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.blueapron.connect.protobuf.MapValueOuterClass.internal_static_MapValue_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -235,7 +235,7 @@ public final class MapValueOuterClass {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      com.google.protobuf.GeneratedMessageV3
+      com.google.protobuf.GeneratedMessage
         .serializeIntegerMapTo(
           output,
           internalGetValue(),
@@ -331,39 +331,39 @@ public final class MapValueOuterClass {
     }
     public static com.blueapron.connect.protobuf.MapValueOuterClass.MapValue parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
     public static com.blueapron.connect.protobuf.MapValueOuterClass.MapValue parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.blueapron.connect.protobuf.MapValueOuterClass.MapValue parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.blueapron.connect.protobuf.MapValueOuterClass.MapValue parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.blueapron.connect.protobuf.MapValueOuterClass.MapValue parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
     public static com.blueapron.connect.protobuf.MapValueOuterClass.MapValue parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -381,7 +381,7 @@ public final class MapValueOuterClass {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -393,7 +393,7 @@ public final class MapValueOuterClass {
      * Protobuf type {@code MapValue}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:MapValue)
         com.blueapron.connect.protobuf.MapValueOuterClass.MapValueOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -423,7 +423,7 @@ public final class MapValueOuterClass {
                 "Invalid map field number: " + number);
         }
       }
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.blueapron.connect.protobuf.MapValueOuterClass.internal_static_MapValue_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -436,12 +436,12 @@ public final class MapValueOuterClass {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (com.google.protobuf.GeneratedMessage
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -718,12 +718,12 @@ public final class MapValueOuterClass {
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_MapValue_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_MapValue_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_MapValue_ValueEntry_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_MapValue_ValueEntry_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
@@ -754,13 +754,13 @@ public final class MapValueOuterClass {
     internal_static_MapValue_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_MapValue_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_MapValue_descriptor,
         new java.lang.String[] { "Value", });
     internal_static_MapValue_ValueEntry_descriptor =
       internal_static_MapValue_descriptor.getNestedTypes().get(0);
     internal_static_MapValue_ValueEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_MapValue_ValueEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
   }

@@ -33,21 +33,15 @@
             <artifactId>connect-api</artifactId>
             <version>1.0.0</version>
         </dependency>
+	      <dependency>
+	         <groupId>com.squareup.wire</groupId>
+	         <artifactId>wire-runtime</artifactId>
+	         <version>1.8.0</version>
+	      </dependency>
         <dependency>
-            <groupId>com.google.protobuf</groupId>
-            <artifactId>protobuf-java</artifactId>
-            <version>${protobuf.version}</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.google.api.grpc/googleapis-common-protos -->
-        <dependency>
-            <groupId>com.google.api.grpc</groupId>
-            <artifactId>googleapis-common-protos</artifactId>
-            <version>0.0.3</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.protobuf</groupId>
-            <artifactId>protobuf-java-util</artifactId>
-            <version>${protobuf.version}</version>
+            <groupId>com.squareup.okio</groupId>
+            <artifactId>okio</artifactId>
+            <version>2.2.2</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -111,18 +105,18 @@
                         <configuration>
                             <title>Kafka Connect Protobuf Converter</title>
                             <documentationUrl>
-                                https://github.com/blueapron/kafka-connect-protobuf-converter/blob/master/README.md
+                                https://source.corp.lookout.com/kafka-connect-protobuf-converter/blob/master/README.md
                             </documentationUrl>
-                            <description>Proto3 converter for Kafka Connect.</description>
-                            <ownerUsername>blueapron</ownerUsername>
+                            <description>Proto converter for Kafka Connect.</description>
+                            <ownerUsername>amalaviya</ownerUsername>
                             <ownerType>organization</ownerType>
-                            <ownerName>Blue Apron, LLC.</ownerName>
-                            <ownerUrl>https://www.blueapron.com/</ownerUrl>
+                            <ownerName>Lookout Inc.</ownerName>
+                            <ownerUrl>https://www.lookout.com/</ownerUrl>
                             <componentTypes>
                                 <componentType>converter</componentType>
                             </componentTypes>
                             <tags>
-                                <tag>proto3</tag>
+                                <tag>com.squareup.wire</tag>
                                 <tag>protocol buffers</tag>
                                 <tag>protobuf</tag>
                                 <tag>converter</tag>

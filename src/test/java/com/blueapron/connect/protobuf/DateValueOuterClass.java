@@ -51,12 +51,12 @@ public final class DateValueOuterClass {
    * Protobuf type {@code DateValue}
    */
   public  static final class DateValue extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:DateValue)
       DateValueOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use DateValue.newBuilder() to construct.
-    private DateValue(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private DateValue(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
     }
     private DateValue() {
@@ -120,7 +120,7 @@ public final class DateValueOuterClass {
       return com.blueapron.connect.protobuf.DateValueOuterClass.internal_static_DateValue_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.blueapron.connect.protobuf.DateValueOuterClass.internal_static_DateValue_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -262,39 +262,39 @@ public final class DateValueOuterClass {
     }
     public static com.blueapron.connect.protobuf.DateValueOuterClass.DateValue parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
     public static com.blueapron.connect.protobuf.DateValueOuterClass.DateValue parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.blueapron.connect.protobuf.DateValueOuterClass.DateValue parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.blueapron.connect.protobuf.DateValueOuterClass.DateValue parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.blueapron.connect.protobuf.DateValueOuterClass.DateValue parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
     public static com.blueapron.connect.protobuf.DateValueOuterClass.DateValue parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -312,7 +312,7 @@ public final class DateValueOuterClass {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -324,7 +324,7 @@ public final class DateValueOuterClass {
      * Protobuf type {@code DateValue}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:DateValue)
         com.blueapron.connect.protobuf.DateValueOuterClass.DateValueOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -332,7 +332,7 @@ public final class DateValueOuterClass {
         return com.blueapron.connect.protobuf.DateValueOuterClass.internal_static_DateValue_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.blueapron.connect.protobuf.DateValueOuterClass.internal_static_DateValue_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -345,12 +345,12 @@ public final class DateValueOuterClass {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (com.google.protobuf.GeneratedMessage
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -664,7 +664,7 @@ public final class DateValueOuterClass {
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_DateValue_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_DateValue_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
@@ -696,7 +696,7 @@ public final class DateValueOuterClass {
     internal_static_DateValue_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_DateValue_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_DateValue_descriptor,
         new java.lang.String[] { "Value", });
     com.google.type.DateProto.getDescriptor();

@@ -43,12 +43,12 @@ public final class TestMessageProtos {
    * Protobuf type {@code TestMessage}
    */
   public  static final class TestMessage extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:TestMessage)
       TestMessageOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use TestMessage.newBuilder() to construct.
-    private TestMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private TestMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
     }
     private TestMessage() {
@@ -113,7 +113,7 @@ public final class TestMessageProtos {
       return com.blueapron.connect.protobuf.TestMessageProtos.internal_static_TestMessage_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.blueapron.connect.protobuf.TestMessageProtos.internal_static_TestMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -201,10 +201,10 @@ public final class TestMessageProtos {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getTestStringBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, testString_);
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, testString_);
       }
       if (!getSomeFieldBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, someField_);
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, someField_);
       }
       unknownFields.writeTo(output);
     }
@@ -215,10 +215,10 @@ public final class TestMessageProtos {
 
       size = 0;
       if (!getTestStringBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, testString_);
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, testString_);
       }
       if (!getSomeFieldBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, someField_);
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, someField_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -294,39 +294,39 @@ public final class TestMessageProtos {
     }
     public static com.blueapron.connect.protobuf.TestMessageProtos.TestMessage parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
     public static com.blueapron.connect.protobuf.TestMessageProtos.TestMessage parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.blueapron.connect.protobuf.TestMessageProtos.TestMessage parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.blueapron.connect.protobuf.TestMessageProtos.TestMessage parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.blueapron.connect.protobuf.TestMessageProtos.TestMessage parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
     public static com.blueapron.connect.protobuf.TestMessageProtos.TestMessage parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -344,7 +344,7 @@ public final class TestMessageProtos {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -352,7 +352,7 @@ public final class TestMessageProtos {
      * Protobuf type {@code TestMessage}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:TestMessage)
         com.blueapron.connect.protobuf.TestMessageProtos.TestMessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -360,7 +360,7 @@ public final class TestMessageProtos {
         return com.blueapron.connect.protobuf.TestMessageProtos.internal_static_TestMessage_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.blueapron.connect.protobuf.TestMessageProtos.internal_static_TestMessage_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -373,12 +373,12 @@ public final class TestMessageProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (com.google.protobuf.GeneratedMessage
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -688,7 +688,7 @@ public final class TestMessageProtos {
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_TestMessage_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_TestMessage_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
@@ -723,7 +723,7 @@ public final class TestMessageProtos {
     internal_static_TestMessage_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_TestMessage_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_TestMessage_descriptor,
         new java.lang.String[] { "TestString", "SomeField", });
     legacyName.internalInit(descriptor.getExtensions().get(0));

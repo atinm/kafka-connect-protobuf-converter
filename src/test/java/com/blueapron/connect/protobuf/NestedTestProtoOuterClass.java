@@ -150,12 +150,12 @@ public final class NestedTestProtoOuterClass {
    * Protobuf type {@code blueapron.connect.protobuf.UserId}
    */
   public  static final class UserId extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:blueapron.connect.protobuf.UserId)
       UserIdOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use UserId.newBuilder() to construct.
-    private UserId(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private UserId(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
     }
     private UserId() {
@@ -231,7 +231,7 @@ public final class NestedTestProtoOuterClass {
       return com.blueapron.connect.protobuf.NestedTestProtoOuterClass.internal_static_blueapron_connect_protobuf_UserId_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.blueapron.connect.protobuf.NestedTestProtoOuterClass.internal_static_blueapron_connect_protobuf_UserId_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -371,7 +371,7 @@ public final class NestedTestProtoOuterClass {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (userIdCase_ == 1) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, userId_);
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, userId_);
       }
       if (userIdCase_ == 2) {
         output.writeInt32(
@@ -389,7 +389,7 @@ public final class NestedTestProtoOuterClass {
 
       size = 0;
       if (userIdCase_ == 1) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, userId_);
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, userId_);
       }
       if (userIdCase_ == 2) {
         size += com.google.protobuf.CodedOutputStream
@@ -501,39 +501,39 @@ public final class NestedTestProtoOuterClass {
     }
     public static com.blueapron.connect.protobuf.NestedTestProtoOuterClass.UserId parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
     public static com.blueapron.connect.protobuf.NestedTestProtoOuterClass.UserId parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.blueapron.connect.protobuf.NestedTestProtoOuterClass.UserId parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.blueapron.connect.protobuf.NestedTestProtoOuterClass.UserId parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.blueapron.connect.protobuf.NestedTestProtoOuterClass.UserId parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
     public static com.blueapron.connect.protobuf.NestedTestProtoOuterClass.UserId parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -551,7 +551,7 @@ public final class NestedTestProtoOuterClass {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -559,7 +559,7 @@ public final class NestedTestProtoOuterClass {
      * Protobuf type {@code blueapron.connect.protobuf.UserId}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:blueapron.connect.protobuf.UserId)
         com.blueapron.connect.protobuf.NestedTestProtoOuterClass.UserIdOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -567,7 +567,7 @@ public final class NestedTestProtoOuterClass {
         return com.blueapron.connect.protobuf.NestedTestProtoOuterClass.internal_static_blueapron_connect_protobuf_UserId_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.blueapron.connect.protobuf.NestedTestProtoOuterClass.internal_static_blueapron_connect_protobuf_UserId_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -580,12 +580,12 @@ public final class NestedTestProtoOuterClass {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (com.google.protobuf.GeneratedMessage
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -1043,12 +1043,12 @@ public final class NestedTestProtoOuterClass {
    * Protobuf type {@code blueapron.connect.protobuf.MessageId}
    */
   public  static final class MessageId extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:blueapron.connect.protobuf.MessageId)
       MessageIdOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use MessageId.newBuilder() to construct.
-    private MessageId(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private MessageId(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
     }
     private MessageId() {
@@ -1106,7 +1106,7 @@ public final class NestedTestProtoOuterClass {
       return com.blueapron.connect.protobuf.NestedTestProtoOuterClass.internal_static_blueapron_connect_protobuf_MessageId_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.blueapron.connect.protobuf.NestedTestProtoOuterClass.internal_static_blueapron_connect_protobuf_MessageId_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -1160,7 +1160,7 @@ public final class NestedTestProtoOuterClass {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
       }
       unknownFields.writeTo(output);
     }
@@ -1171,7 +1171,7 @@ public final class NestedTestProtoOuterClass {
 
       size = 0;
       if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1243,39 +1243,39 @@ public final class NestedTestProtoOuterClass {
     }
     public static com.blueapron.connect.protobuf.NestedTestProtoOuterClass.MessageId parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
     public static com.blueapron.connect.protobuf.NestedTestProtoOuterClass.MessageId parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.blueapron.connect.protobuf.NestedTestProtoOuterClass.MessageId parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.blueapron.connect.protobuf.NestedTestProtoOuterClass.MessageId parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.blueapron.connect.protobuf.NestedTestProtoOuterClass.MessageId parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
     public static com.blueapron.connect.protobuf.NestedTestProtoOuterClass.MessageId parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -1293,7 +1293,7 @@ public final class NestedTestProtoOuterClass {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1301,7 +1301,7 @@ public final class NestedTestProtoOuterClass {
      * Protobuf type {@code blueapron.connect.protobuf.MessageId}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:blueapron.connect.protobuf.MessageId)
         com.blueapron.connect.protobuf.NestedTestProtoOuterClass.MessageIdOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -1309,7 +1309,7 @@ public final class NestedTestProtoOuterClass {
         return com.blueapron.connect.protobuf.NestedTestProtoOuterClass.internal_static_blueapron_connect_protobuf_MessageId_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.blueapron.connect.protobuf.NestedTestProtoOuterClass.internal_static_blueapron_connect_protobuf_MessageId_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -1322,12 +1322,12 @@ public final class NestedTestProtoOuterClass {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (com.google.protobuf.GeneratedMessage
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -1577,12 +1577,12 @@ public final class NestedTestProtoOuterClass {
    * Protobuf type {@code blueapron.connect.protobuf.ComplexType}
    */
   public  static final class ComplexType extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:blueapron.connect.protobuf.ComplexType)
       ComplexTypeOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use ComplexType.newBuilder() to construct.
-    private ComplexType(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private ComplexType(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
     }
     private ComplexType() {
@@ -1650,7 +1650,7 @@ public final class NestedTestProtoOuterClass {
       return com.blueapron.connect.protobuf.NestedTestProtoOuterClass.internal_static_blueapron_connect_protobuf_ComplexType_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.blueapron.connect.protobuf.NestedTestProtoOuterClass.internal_static_blueapron_connect_protobuf_ComplexType_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -1771,7 +1771,7 @@ public final class NestedTestProtoOuterClass {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (someValCase_ == 1) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, someVal_);
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, someVal_);
       }
       if (someValCase_ == 2) {
         output.writeInt32(
@@ -1789,7 +1789,7 @@ public final class NestedTestProtoOuterClass {
 
       size = 0;
       if (someValCase_ == 1) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, someVal_);
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, someVal_);
       }
       if (someValCase_ == 2) {
         size += com.google.protobuf.CodedOutputStream
@@ -1898,39 +1898,39 @@ public final class NestedTestProtoOuterClass {
     }
     public static com.blueapron.connect.protobuf.NestedTestProtoOuterClass.ComplexType parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
     public static com.blueapron.connect.protobuf.NestedTestProtoOuterClass.ComplexType parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.blueapron.connect.protobuf.NestedTestProtoOuterClass.ComplexType parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.blueapron.connect.protobuf.NestedTestProtoOuterClass.ComplexType parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.blueapron.connect.protobuf.NestedTestProtoOuterClass.ComplexType parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
     public static com.blueapron.connect.protobuf.NestedTestProtoOuterClass.ComplexType parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -1948,7 +1948,7 @@ public final class NestedTestProtoOuterClass {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1956,7 +1956,7 @@ public final class NestedTestProtoOuterClass {
      * Protobuf type {@code blueapron.connect.protobuf.ComplexType}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:blueapron.connect.protobuf.ComplexType)
         com.blueapron.connect.protobuf.NestedTestProtoOuterClass.ComplexTypeOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -1964,7 +1964,7 @@ public final class NestedTestProtoOuterClass {
         return com.blueapron.connect.protobuf.NestedTestProtoOuterClass.internal_static_blueapron_connect_protobuf_ComplexType_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.blueapron.connect.protobuf.NestedTestProtoOuterClass.internal_static_blueapron_connect_protobuf_ComplexType_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -1977,12 +1977,12 @@ public final class NestedTestProtoOuterClass {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (com.google.protobuf.GeneratedMessage
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -2425,12 +2425,12 @@ public final class NestedTestProtoOuterClass {
    * Protobuf type {@code blueapron.connect.protobuf.NestedTestProto}
    */
   public  static final class NestedTestProto extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:blueapron.connect.protobuf.NestedTestProto)
       NestedTestProtoOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use NestedTestProto.newBuilder() to construct.
-    private NestedTestProto(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private NestedTestProto(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
     }
     private NestedTestProto() {
@@ -2570,7 +2570,7 @@ public final class NestedTestProtoOuterClass {
               "Invalid map field number: " + number);
       }
     }
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.blueapron.connect.protobuf.NestedTestProtoOuterClass.internal_static_blueapron_connect_protobuf_NestedTestProto_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -2790,7 +2790,7 @@ public final class NestedTestProtoOuterClass {
         output.writeBool(2, isActive_);
       }
       for (int i = 0; i < experimentsActive_.size(); i++) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, experimentsActive_.getRaw(i));
+        com.google.protobuf.GeneratedMessage.writeString(output, 3, experimentsActive_.getRaw(i));
       }
       if (updatedAt_ != null) {
         output.writeMessage(4, getUpdatedAt());
@@ -2801,7 +2801,7 @@ public final class NestedTestProtoOuterClass {
       if (complexType_ != null) {
         output.writeMessage(6, getComplexType());
       }
-      com.google.protobuf.GeneratedMessageV3
+      com.google.protobuf.GeneratedMessage
         .serializeStringMapTo(
           output,
           internalGetMapType(),
@@ -2966,39 +2966,39 @@ public final class NestedTestProtoOuterClass {
     }
     public static com.blueapron.connect.protobuf.NestedTestProtoOuterClass.NestedTestProto parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
     public static com.blueapron.connect.protobuf.NestedTestProtoOuterClass.NestedTestProto parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.blueapron.connect.protobuf.NestedTestProtoOuterClass.NestedTestProto parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.blueapron.connect.protobuf.NestedTestProtoOuterClass.NestedTestProto parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.blueapron.connect.protobuf.NestedTestProtoOuterClass.NestedTestProto parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
     public static com.blueapron.connect.protobuf.NestedTestProtoOuterClass.NestedTestProto parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -3016,7 +3016,7 @@ public final class NestedTestProtoOuterClass {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -3028,7 +3028,7 @@ public final class NestedTestProtoOuterClass {
      * Protobuf type {@code blueapron.connect.protobuf.NestedTestProto}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:blueapron.connect.protobuf.NestedTestProto)
         com.blueapron.connect.protobuf.NestedTestProtoOuterClass.NestedTestProtoOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -3058,7 +3058,7 @@ public final class NestedTestProtoOuterClass {
                 "Invalid map field number: " + number);
         }
       }
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.blueapron.connect.protobuf.NestedTestProtoOuterClass.internal_static_blueapron_connect_protobuf_NestedTestProto_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -3071,12 +3071,12 @@ public final class NestedTestProtoOuterClass {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (com.google.protobuf.GeneratedMessage
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -3941,27 +3941,27 @@ public final class NestedTestProtoOuterClass {
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_blueapron_connect_protobuf_UserId_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_blueapron_connect_protobuf_UserId_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_blueapron_connect_protobuf_MessageId_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_blueapron_connect_protobuf_MessageId_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_blueapron_connect_protobuf_ComplexType_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_blueapron_connect_protobuf_ComplexType_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_blueapron_connect_protobuf_NestedTestProto_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_blueapron_connect_protobuf_NestedTestProto_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_blueapron_connect_protobuf_NestedTestProto_MapTypeEntry_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_blueapron_connect_protobuf_NestedTestProto_MapTypeEntry_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
@@ -4010,31 +4010,31 @@ public final class NestedTestProtoOuterClass {
     internal_static_blueapron_connect_protobuf_UserId_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_blueapron_connect_protobuf_UserId_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_blueapron_connect_protobuf_UserId_descriptor,
         new java.lang.String[] { "BaComUserId", "OtherUserId", "AnotherId", "UserId", });
     internal_static_blueapron_connect_protobuf_MessageId_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_blueapron_connect_protobuf_MessageId_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_blueapron_connect_protobuf_MessageId_descriptor,
         new java.lang.String[] { "Id", });
     internal_static_blueapron_connect_protobuf_ComplexType_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_blueapron_connect_protobuf_ComplexType_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_blueapron_connect_protobuf_ComplexType_descriptor,
         new java.lang.String[] { "OneId", "OtherId", "IsActive", "SomeVal", });
     internal_static_blueapron_connect_protobuf_NestedTestProto_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_blueapron_connect_protobuf_NestedTestProto_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_blueapron_connect_protobuf_NestedTestProto_descriptor,
         new java.lang.String[] { "UserId", "IsActive", "ExperimentsActive", "UpdatedAt", "Status", "ComplexType", "MapType", });
     internal_static_blueapron_connect_protobuf_NestedTestProto_MapTypeEntry_descriptor =
       internal_static_blueapron_connect_protobuf_NestedTestProto_descriptor.getNestedTypes().get(0);
     internal_static_blueapron_connect_protobuf_NestedTestProto_MapTypeEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_blueapron_connect_protobuf_NestedTestProto_MapTypeEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     com.google.protobuf.TimestampProto.getDescriptor();

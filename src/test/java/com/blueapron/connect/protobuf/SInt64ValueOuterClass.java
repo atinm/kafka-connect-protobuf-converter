@@ -31,12 +31,12 @@ public final class SInt64ValueOuterClass {
    * Protobuf type {@code SInt64Value}
    */
   public  static final class SInt64Value extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:SInt64Value)
       SInt64ValueOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use SInt64Value.newBuilder() to construct.
-    private SInt64Value(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private SInt64Value(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
     }
     private SInt64Value() {
@@ -93,7 +93,7 @@ public final class SInt64ValueOuterClass {
       return com.blueapron.connect.protobuf.SInt64ValueOuterClass.internal_static_SInt64Value_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.blueapron.connect.protobuf.SInt64ValueOuterClass.internal_static_SInt64Value_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -207,39 +207,39 @@ public final class SInt64ValueOuterClass {
     }
     public static com.blueapron.connect.protobuf.SInt64ValueOuterClass.SInt64Value parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
     public static com.blueapron.connect.protobuf.SInt64ValueOuterClass.SInt64Value parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.blueapron.connect.protobuf.SInt64ValueOuterClass.SInt64Value parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.blueapron.connect.protobuf.SInt64ValueOuterClass.SInt64Value parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.blueapron.connect.protobuf.SInt64ValueOuterClass.SInt64Value parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
     public static com.blueapron.connect.protobuf.SInt64ValueOuterClass.SInt64Value parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -257,7 +257,7 @@ public final class SInt64ValueOuterClass {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -269,7 +269,7 @@ public final class SInt64ValueOuterClass {
      * Protobuf type {@code SInt64Value}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:SInt64Value)
         com.blueapron.connect.protobuf.SInt64ValueOuterClass.SInt64ValueOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -277,7 +277,7 @@ public final class SInt64ValueOuterClass {
         return com.blueapron.connect.protobuf.SInt64ValueOuterClass.internal_static_SInt64Value_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.blueapron.connect.protobuf.SInt64ValueOuterClass.internal_static_SInt64Value_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -290,12 +290,12 @@ public final class SInt64ValueOuterClass {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (com.google.protobuf.GeneratedMessage
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -474,7 +474,7 @@ public final class SInt64ValueOuterClass {
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_SInt64Value_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_SInt64Value_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
@@ -504,7 +504,7 @@ public final class SInt64ValueOuterClass {
     internal_static_SInt64Value_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_SInt64Value_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_SInt64Value_descriptor,
         new java.lang.String[] { "Value", });
   }

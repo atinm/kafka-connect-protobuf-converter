@@ -4,11 +4,11 @@ import org.apache.kafka.connect.data.Schema;
 import org.apache.kafka.connect.data.SchemaAndValue;
 import org.apache.kafka.connect.errors.ConnectException;
 import org.apache.kafka.connect.storage.Converter;
+import com.squareup.wire.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Map;
-
 
 /**
  * Implementation of Converter that uses Protobufs.
@@ -40,11 +40,13 @@ public class ProtobufConverter implements Converter {
 
     String protoClassNameString = protoClassName.toString();
     try {
-      protobufData = new ProtobufData(Class.forName(protoClassNameString).asSubclass(com.google.protobuf.GeneratedMessageV3.class), legacyNameString);
+      protobufData = new ProtobufData(Class.forName(protoClassNameString).asSubclass(com.squareup.wire.Message.class),
+          legacyNameString);
     } catch (ClassNotFoundException e) {
       throw new ConnectException("Proto class " + protoClassNameString + " not found in the classpath");
     } catch (ClassCastException e) {
-      throw new ConnectException("Proto class " + protoClassNameString + " is not a valid proto3 message class");
+      throw new ConnectException(
+          "Proto class " + protoClassNameString + " is not a valid com.squareup.wire.Message class" + e.toString());
     }
   }
 

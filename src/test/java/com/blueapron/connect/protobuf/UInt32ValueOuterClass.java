@@ -31,12 +31,12 @@ public final class UInt32ValueOuterClass {
    * Protobuf type {@code UInt32Value}
    */
   public  static final class UInt32Value extends
-      com.google.protobuf.GeneratedMessageV3 implements
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:UInt32Value)
       UInt32ValueOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use UInt32Value.newBuilder() to construct.
-    private UInt32Value(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private UInt32Value(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
     }
     private UInt32Value() {
@@ -93,7 +93,7 @@ public final class UInt32ValueOuterClass {
       return com.blueapron.connect.protobuf.UInt32ValueOuterClass.internal_static_UInt32Value_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.blueapron.connect.protobuf.UInt32ValueOuterClass.internal_static_UInt32Value_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
@@ -206,39 +206,39 @@ public final class UInt32ValueOuterClass {
     }
     public static com.blueapron.connect.protobuf.UInt32ValueOuterClass.UInt32Value parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
     public static com.blueapron.connect.protobuf.UInt32ValueOuterClass.UInt32Value parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.blueapron.connect.protobuf.UInt32ValueOuterClass.UInt32Value parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.blueapron.connect.protobuf.UInt32ValueOuterClass.UInt32Value parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.blueapron.connect.protobuf.UInt32ValueOuterClass.UInt32Value parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
     public static com.blueapron.connect.protobuf.UInt32ValueOuterClass.UInt32Value parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
+      return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
@@ -256,7 +256,7 @@ public final class UInt32ValueOuterClass {
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -268,7 +268,7 @@ public final class UInt32ValueOuterClass {
      * Protobuf type {@code UInt32Value}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:UInt32Value)
         com.blueapron.connect.protobuf.UInt32ValueOuterClass.UInt32ValueOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -276,7 +276,7 @@ public final class UInt32ValueOuterClass {
         return com.blueapron.connect.protobuf.UInt32ValueOuterClass.internal_static_UInt32Value_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.blueapron.connect.protobuf.UInt32ValueOuterClass.internal_static_UInt32Value_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -289,12 +289,12 @@ public final class UInt32ValueOuterClass {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
+        if (com.google.protobuf.GeneratedMessage
                 .alwaysUseFieldBuilders) {
         }
       }
@@ -473,7 +473,7 @@ public final class UInt32ValueOuterClass {
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_UInt32Value_descriptor;
   private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_UInt32Value_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
@@ -503,7 +503,7 @@ public final class UInt32ValueOuterClass {
     internal_static_UInt32Value_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_UInt32Value_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_UInt32Value_descriptor,
         new java.lang.String[] { "Value", });
   }

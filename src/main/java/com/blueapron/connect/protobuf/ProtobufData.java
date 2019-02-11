@@ -1,12 +1,8 @@
 package com.blueapron.connect.protobuf;
 
-
-import com.google.protobuf.ByteString;
-import com.google.protobuf.Descriptors;
-import com.google.protobuf.Descriptors.OneofDescriptor;
-import com.google.protobuf.GeneratedMessageV3;
-import com.google.protobuf.InvalidProtocolBufferException;
-import com.google.protobuf.Message;
+import com.squareup.wire.Wire;
+import com.squareup.wire.Message;
+import com.squareup.wire.Message.Datatype;
 import org.apache.kafka.connect.data.Date;
 import org.apache.kafka.connect.data.Field;
 import org.apache.kafka.connect.data.Schema;
@@ -18,47 +14,54 @@ import org.apache.kafka.connect.errors.ConnectException;
 import org.apache.kafka.connect.errors.DataException;
 
 import java.lang.reflect.Method;
+import java.lang.annotation.Annotation;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.LinkedList;
 import java.util.Map;
-import com.google.protobuf.util.Timestamps;
-
-import static com.google.protobuf.Descriptors.FieldDescriptor.Type.BOOL;
-import static com.google.protobuf.Descriptors.FieldDescriptor.Type.BYTES;
-import static com.google.protobuf.Descriptors.FieldDescriptor.Type.DOUBLE;
-import static com.google.protobuf.Descriptors.FieldDescriptor.Type.ENUM;
-import static com.google.protobuf.Descriptors.FieldDescriptor.Type.FLOAT;
-import static com.google.protobuf.Descriptors.FieldDescriptor.Type.INT32;
-import static com.google.protobuf.Descriptors.FieldDescriptor.Type.INT64;
-import static com.google.protobuf.Descriptors.FieldDescriptor.Type.MESSAGE;
-import static com.google.protobuf.Descriptors.FieldDescriptor.Type.SINT32;
-import static com.google.protobuf.Descriptors.FieldDescriptor.Type.SINT64;
-import static com.google.protobuf.Descriptors.FieldDescriptor.Type.STRING;
-
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import okio.ByteString;
 
 class ProtobufData {
-  private final Method newBuilder;
+  private final Class<? extends com.squareup.wire.Message.Builder> builder;
+  private final Class clazz;
   private final Schema schema;
   private final String legacyName;
-  public static final Descriptors.FieldDescriptor.Type[] PROTO_TYPES_WITH_DEFAULTS = new Descriptors.FieldDescriptor.Type[] { INT32, INT64, SINT32, SINT64, FLOAT, DOUBLE, BOOL, STRING, BYTES, ENUM };
+  public static final Message.Datatype[] PROTO_TYPES_WITH_DEFAULTS = new Message.Datatype[] { Datatype.INT32,
+      Datatype.INT64, Datatype.UINT32, Datatype.UINT64, Datatype.SINT32, Datatype.SINT64, Datatype.BOOL, Datatype.ENUM,
+      Datatype.STRING, Datatype.BYTES, Datatype.MESSAGE, Datatype.FIXED32, Datatype.SFIXED32, Datatype.FIXED64,
+      Datatype.SFIXED64, Datatype.FLOAT, Datatype.DOUBLE };
   private HashMap<String, String> connectProtoNameMap = new HashMap<String, String>();
 
-  private GeneratedMessageV3.Builder getBuilder() {
+  ProtobufData(Class<? extends com.squareup.wire.Message> clazz, String legacyName) {
+    this.legacyName = legacyName;
+    this.clazz = clazz;
+
     try {
-      return (GeneratedMessageV3.Builder) newBuilder.invoke(Object.class);
-    } catch (Exception e) {
-      throw new ConnectException("Not a valid proto3 builder", e);
+      Class[] nested = clazz.getDeclaredClasses();
+      for (Class c : nested) {
+        if (c.getSimpleName().equals("Builder")) {
+          builder = c.asSubclass(Class.forName("Message.Builder"));
+          break;
+        }
+      }
+    } catch (NoSuchMethodException e) {
+      throw new ConnectException(
+          "Proto class " + clazz.getCanonicalName() + " is not a valid com.squareup.wire.Message class", e);
     }
+
+    this.schema = toConnectSchema(builder.newInstance().build());
   }
 
   private Message getMessage(byte[] value) {
     try {
-      return getBuilder().mergeFrom(value).build();
-    } catch (InvalidProtocolBufferException e) {
+      return new Wire().parseFrom(value, this.clazz);
+    } catch (IOException e) {
       throw new DataException("Invalid protobuf data", e);
     }
   }
@@ -67,32 +70,14 @@ class ProtobufData {
     return descriptorContainingTypeName.concat(connectFieldName);
   }
 
-  private String getConnectFieldName(Descriptors.FieldDescriptor descriptor) {
-    String name = descriptor.getName();
-    for (Map.Entry<Descriptors.FieldDescriptor, Object> option: descriptor.getOptions().getAllFields().entrySet()) {
-      if (option.getKey().getName().equalsIgnoreCase(this.legacyName)) {
-        name = option.getValue().toString();
-      }
-    }
-
-    connectProtoNameMap.put(getProtoMapKey(descriptor.getContainingType().getFullName(), name), descriptor.getName());
+  private String getConnectFieldName(java.lang.reflect.Field field) {
+    String name = field.getName();
+    connectProtoNameMap.put(getProtoMapKey(field.getDeclaringClass().getCanonicalName(), name), field.getName());
     return name;
   }
 
-  private String getProtoFieldName(String descriptorForTypeName, String connectFieldName) {
-    return connectProtoNameMap.get(getProtoMapKey(descriptorForTypeName, connectFieldName));
-  }
-
-  ProtobufData(Class<? extends com.google.protobuf.GeneratedMessageV3> clazz, String legacyName) {
-    this.legacyName = legacyName;
-
-    try {
-      this.newBuilder = clazz.getDeclaredMethod("newBuilder");
-    } catch (NoSuchMethodException e) {
-      throw new ConnectException("Proto class " + clazz.getCanonicalName() + " is not a valid proto3 message class", e);
-    }
-
-    this.schema = toConnectSchema(getBuilder().getDefaultInstanceForType());
+  private String getProtoFieldName(String canonicalName, String connectFieldName) {
+    return connectProtoNameMap.get(getProtoMapKey(canonicalName, connectFieldName));
   }
 
   SchemaAndValue toConnectData(byte[] value) {
@@ -101,110 +86,120 @@ class ProtobufData {
       return SchemaAndValue.NULL;
     }
 
-    return new SchemaAndValue(this.schema, toConnectData(this.schema, message));
+    return new SchemaAndValue(this.schema, message);
+  }
+
+  /*
+       * Retrieving fields list of specified class and which
+       * are annotated by incoming annotation class
+       * If recursively is true, retrieving fields from all class hierarchy
+       *
+       * @param clazz - where fields are searching
+       * @param annotationClass - specified annotation class
+       * @param recursively param
+       * @return list of annotated fields
+       */
+  private static List<java.lang.reflect.Field> getAnnotatedDeclaredFields(Class clazz, Class annotationClass) {
+    java.lang.reflect.Field[] allFields = clazz.getDeclaredFields();
+    List<java.lang.reflect.Field> annotatedFields = new LinkedList<java.lang.reflect.Field>();
+
+    for (java.lang.reflect.Field field : allFields) {
+      if (field.isAnnotationPresent(annotationClass))
+        annotatedFields.add(field);
+    }
+
+    return annotatedFields;
   }
 
   private Schema toConnectSchema(Message message) {
-    final SchemaBuilder builder = SchemaBuilder.struct();
-    final List<Descriptors.FieldDescriptor> fieldDescriptorList = message.getDescriptorForType().getFields();
-    for (Descriptors.FieldDescriptor descriptor : fieldDescriptorList) {
-      builder.field(getConnectFieldName(descriptor), toConnectSchema(descriptor));
+    try {
+      final SchemaBuilder builder = SchemaBuilder.struct();
+      final List<java.lang.reflect.Field> fieldList = getAnnotatedDeclaredFields(clazz, Class.forName("ProtoField"));
+      for (java.lang.reflect.Field field : fieldList) {
+        builder.field(getConnectFieldName(field), toConnectSchema(field));
+      }
+
+      return builder.build();
+    } catch (ClassNotFoundException e) {
+      throw new ConnectException("Proto class ProtoField not found in the classpath");
     }
-
-    return builder.build();
   }
 
-  private boolean isTimestampDescriptor(Descriptors.FieldDescriptor descriptor) {
-    return descriptor.getMessageType().getFullName().equals("google.protobuf.Timestamp");
+  private boolean isTimestampDescriptor(java.lang.reflect.Field field) {
+    return field.getType().getCanonicalName().equals("google.protobuf.Timestamp");
   }
 
-  private boolean isDateDescriptor(Descriptors.FieldDescriptor descriptor) {
-    return descriptor.getMessageType().getFullName().equals("google.type.Date");
+  private boolean isDateDescriptor(java.lang.reflect.Field field) {
+    return field.getType().getCanonicalName().equals("google.type.Date");
   }
 
-  private Schema toConnectSchema(Descriptors.FieldDescriptor descriptor) {
+  private Schema toConnectSchema(java.lang.reflect.Field field) {
     final SchemaBuilder builder;
 
-    switch (descriptor.getType()) {
-      case INT32:
-      case SINT32:
-      {
-        builder = SchemaBuilder.int32();
-        break;
-      }
+    switch (field.getType().getSimpleName()) {
+    case "Integer": {
+      builder = SchemaBuilder.int32();
+      break;
+    }
 
-      case INT64:
-      case SINT64:
-      case UINT32:
-      {
-        builder = SchemaBuilder.int64();
-        break;
-      }
+    case "Long": {
+      builder = SchemaBuilder.int64();
+      break;
+    }
 
-      case FLOAT: {
-        builder = SchemaBuilder.float32();
-        break;
-      }
+    case "Float": {
+      builder = SchemaBuilder.float32();
+      break;
+    }
 
-      case DOUBLE: {
-        builder = SchemaBuilder.float64();
-        break;
-      }
+    case "Double": {
+      builder = SchemaBuilder.float64();
+      break;
+    }
 
-      case BOOL: {
-        builder = SchemaBuilder.bool();
-        break;
-      }
+    case "Boolean": {
+      builder = SchemaBuilder.bool();
+      break;
+    }
 
-      // TODO - Do we need to support byte or short?
-      /*case INT8:
-        // Encoded as an Integer
-        converted = value == null ? null : ((Integer) value).byteValue();
-        break;
-      case INT16:
-        // Encoded as an Integer
-        converted = value == null ? null : ((Integer) value).shortValue();
-        break;*/
+    case "String":
+      builder = SchemaBuilder.string();
+      break;
 
-      case STRING:
+    case "ByteString":
+      builder = SchemaBuilder.bytes();
+      break;
+
+    default:
+      if (field.getType().isEnum()) {
         builder = SchemaBuilder.string();
         break;
+      }
 
-      case BYTES:
-        builder = SchemaBuilder.bytes();
+      if (isTimestampDescriptor(field)) {
+        builder = Timestamp.builder();
         break;
+      }
 
-      case ENUM:
-        builder = SchemaBuilder.string();
+      if (isDateDescriptor(field)) {
+        builder = Date.builder();
         break;
+      }
 
-      case MESSAGE: {
-        if (isTimestampDescriptor(descriptor)) {
-          builder = Timestamp.builder();
-          break;
-        }
-
-        if (isDateDescriptor(descriptor)) {
-          builder = Date.builder();
-          break;
-        }
-
+      if (field.getType().getSimpleName().startsWith("class")) {
         builder = SchemaBuilder.struct();
-        for (Descriptors.FieldDescriptor fieldDescriptor : descriptor.getMessageType().getFields()) {
-          builder.field(getConnectFieldName(fieldDescriptor), toConnectSchema(fieldDescriptor));
+        for (java.lang.reflect.Field f : field.getClass().getFields()) {
+          builder.field(getConnectFieldName(f), toConnectSchema(f));
         }
-
-        break;
+      } else {
+        throw new DataException("Unknown Connect schema type: " + field.getType());
       }
-
-      default:
-        throw new DataException("Unknown Connect schema type: " + descriptor.getType());
     }
 
     builder.optional();
     Schema schema = builder.build();
 
-    if (descriptor.isRepeated()) {
+    if (field.getType().isArray()) {
       final SchemaBuilder arrayBuilder = SchemaBuilder.array(schema);
       arrayBuilder.optional();
       schema = arrayBuilder.build();
@@ -221,231 +216,82 @@ class ProtobufData {
     return Date.SCHEMA.name().equals(schema.name());
   }
 
-  private void setStructField(Schema schema, Message message, Struct result, Descriptors.FieldDescriptor fieldDescriptor) {
-    final String fieldName = getConnectFieldName(fieldDescriptor);
-    final Field field = schema.field(fieldName);
-    Object obj = message.getField(fieldDescriptor);
-    result.put(fieldName, toConnectData(field.schema(), obj));
-  }
-
-  Object toConnectData(Schema schema, Object value) {
-    try {
-      if (isProtobufTimestamp(schema)) {
-        com.google.protobuf.Timestamp timestamp = (com.google.protobuf.Timestamp) value;
-        return Timestamp.toLogical(schema, Timestamps.toMillis(timestamp));
-      }
-
-      if (isProtobufDate(schema)) {
-        com.google.type.Date date = (com.google.type.Date) value;
-        return ProtobufUtils.convertFromGoogleDate(date);
-      }
-
-      Object converted = null;
-      switch (schema.type()) {
-        // Pass through types
-        case INT32: {
-          Integer intValue = (Integer) value; // Validate type
-          converted = value;
-          break;
-        }
-
-        case INT64: {
-          try {
-            Long longValue = (Long) value; // Validate type
-            converted = value;
-          } catch (ClassCastException e) {
-            Integer intValue = (Integer) value; // Validate type
-            converted = Integer.toUnsignedLong(intValue);
-          }
-
-          break;
-        }
-
-        case FLOAT32: {
-          Float floatValue = (Float) value; // Validate type
-          converted = value;
-          break;
-        }
-
-        case FLOAT64: {
-          Double doubleValue = (Double) value; // Validate type
-          converted = value;
-          break;
-        }
-
-        case BOOLEAN: {
-          Boolean boolValue = (Boolean) value; // Validate type
-          converted = value;
-          break;
-        }
-
-        // TODO - Do we need to support byte or short?
-        /*case INT8:
-          // Encoded as an Integer
-          converted = value == null ? null : ((Integer) value).byteValue();
-          break;
-        case INT16:
-          // Encoded as an Integer
-          converted = value == null ? null : ((Integer) value).shortValue();
-          break;*/
-
-        case STRING:
-          if (value instanceof String) {
-            converted = value;
-          } else if (value instanceof CharSequence
-            || value instanceof Enum
-            || value instanceof Descriptors.EnumValueDescriptor) {
-            converted = value.toString();
-          } else {
-            throw new DataException("Invalid class for string type, expecting String or "
-              + "CharSequence but found " + value.getClass());
-          }
-          break;
-
-        case BYTES:
-          if (value instanceof byte[]) {
-            converted = ByteBuffer.wrap((byte[]) value);
-          } else if (value instanceof ByteBuffer) {
-            converted = value;
-          } else {
-            throw new DataException("Invalid class for bytes type, expecting byte[] or ByteBuffer "
-              + "but found " + value.getClass());
-          }
-          break;
-
-        // Used for repeated types
-        case ARRAY: {
-          final Schema valueSchema = schema.valueSchema();
-          final Collection<Object> original = (Collection<Object>) value;
-          final List<Object> result = new ArrayList<Object>(original.size());
-          for (Object elem : original) {
-            result.add(toConnectData(valueSchema, elem));
-          }
-          converted = result;
-          break;
-        }
-
-        case STRUCT: {
-          final Message message = (Message) value; // Validate type
-          if (message == message.getDefaultInstanceForType()) {
-            return null;
-          }
-
-          final Struct result = new Struct(schema.schema());
-          final Descriptors.Descriptor descriptor = message.getDescriptorForType();
-
-          for (OneofDescriptor oneOfDescriptor : descriptor.getOneofs()) {
-            final Descriptors.FieldDescriptor fieldDescriptor = message.getOneofFieldDescriptor(oneOfDescriptor);
-            setStructField(schema, message, result, fieldDescriptor);
-          }
-
-          for (Descriptors.FieldDescriptor fieldDescriptor : descriptor.getFields()) {
-            Descriptors.OneofDescriptor oneOfDescriptor = fieldDescriptor.getContainingOneof();
-            if (oneOfDescriptor != null) {
-              continue;
-            }
-
-            setStructField(schema, message, result, fieldDescriptor);
-          }
-
-          converted = result;
-          break;
-        }
-
-        default:
-          throw new DataException("Unknown Connect schema type: " + schema.type());
-      }
-
-      return converted;
-    } catch (ClassCastException e) {
-      throw new DataException("Invalid type for " + schema.type() + ": " + value.getClass());
-    }
-  }
-
   byte[] fromConnectData(Object value) {
-    final com.google.protobuf.GeneratedMessageV3.Builder builder = getBuilder();
     final Struct struct = (Struct) value;
 
     for (Field field : this.schema.fields()) {
-      fromConnectData(builder, field, struct.get(field));
+      fromConnectData((com.squareup.wire.Message.Builder)this.builder, field, struct.get(field));
     }
 
     return builder.build().toByteArray();
   }
 
-  private void fromConnectData(com.google.protobuf.GeneratedMessageV3.Builder builder, Field field, Object value) {
-    final String protobufFieldName = getProtoFieldName(builder.getDescriptorForType().getFullName(), field.name());
-    final Descriptors.FieldDescriptor fieldDescriptor = builder.getDescriptorForType().findFieldByName(protobufFieldName);
-    if (fieldDescriptor == null) {
-      // Ignore unknown fields
-      return;
-    }
-
-    final Schema schema = field.schema();
-    final Schema.Type schemaType = schema.type();
-
+  private void fromConnectData(com.squareup.wire.Message.Builder builder, Field field, Object value) {
+    final String protobufFieldName = getProtoFieldName(builder.getClass().getCanonicalName(), field.name());
     try {
-      switch (schemaType) {
-        case INT32: {
-          if (isProtobufDate(schema)) {
-            final java.util.Date date = (java.util.Date) value;
-            builder.setField(fieldDescriptor, ProtobufUtils.convertToGoogleDate(date));
-            return;
-          }
+      final java.lang.reflect.Field f = builder.getClass().getDeclaredField(protobufFieldName);
+      if (f == null) {
+        // Ignore unknown fields
+        return;
+      }
 
+      final Schema schema = field.schema();
+      final Schema.Type schemaType = schema.type();
+
+      try {
+        switch (schemaType) {
+        case INT32: {
           final Integer intValue = (Integer) value; // Check for correct type
-          builder.setField(fieldDescriptor, intValue);
+          f.set(builder.getClass(), intValue);
           return;
         }
 
         case INT64: {
-          if (isProtobufTimestamp(schema)) {
-            final java.util.Date timestamp = (java.util.Date) value;
-            builder.setField(fieldDescriptor, Timestamps.fromMillis(Timestamp.fromLogical(schema, timestamp)));
-            return;
-          }
-
           final Long longValue = (Long) value; // Check for correct type
-          builder.setField(fieldDescriptor, longValue);
+          f.set(builder.getClass(), longValue);
           return;
         }
 
         case FLOAT32: {
           final Float floatValue = (Float) value; // Check for correct type
-          builder.setField(fieldDescriptor, floatValue);
+          f.set(builder.getClass(), floatValue);
           return;
         }
 
         case FLOAT64: {
           final Double doubleValue = (Double) value; // Check for correct type
-          builder.setField(fieldDescriptor, doubleValue);
+          f.set(builder.getClass(), doubleValue);
           return;
         }
 
         case BOOLEAN: {
           final Boolean boolValue = (Boolean) value; // Check for correct type
-          builder.setField(fieldDescriptor, boolValue);
+          f.set(builder.getClass(), boolValue);
           return;
         }
 
         case STRING: {
           final String stringValue = (String) value; // Check for correct type
-          builder.setField(fieldDescriptor, stringValue);
+          f.set(builder.getClass(), stringValue);
           return;
         }
 
         case BYTES: {
-          final ByteBuffer bytesValue = value instanceof byte[] ? ByteBuffer.wrap((byte[]) value) :
-            (ByteBuffer) value;
-          builder.setField(fieldDescriptor, ByteString.copyFrom(bytesValue));
+          final ByteBuffer bytesValue = value instanceof byte[] ? ByteBuffer.wrap((byte[]) value) : (ByteBuffer) value;
+          f.set(builder.getClass(), bytesValue.duplicate());
           return;
         }
 
         default:
           throw new DataException("Unknown schema type: " + schema.type());
+        }
+      } catch (ClassCastException e) {
+        throw new DataException("Invalid type for " + schema.type() + ": " + value.getClass());
+      } catch (IllegalAccessException e) {
+        throw new DataException("Invalid type for " + schema.type() + ": " + value.getClass());
       }
-    } catch (ClassCastException e) {
-      throw new DataException("Invalid type for " + schema.type() + ": " + value.getClass());
+    } catch (NoSuchFieldException e) {
+      throw new ConnectException("Field " + protobufFieldName + " not found in the classpath");
     }
   }
 }
